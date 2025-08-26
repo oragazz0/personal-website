@@ -16,12 +16,12 @@ export default function Footer() {
         <div className={styles.socialGroup}>
           <Link
             className={styles.socialMedia}
-            href="https://www.instagram.com/oragazzo"
+            href="https://www.instagram.com/oragazz0"
             target="_blank"
             rel="noreferrer"
           >
             <InstagramIcon className={styles.socialBadge} />
-            <p className={styles.socialText}>@oragazzo</p>
+            <p className={styles.socialText}>@oragazz0</p>
           </Link>
           <Link
             className={styles.socialMedia}
@@ -46,12 +46,12 @@ export default function Footer() {
           </Link>
           <Link
             className={styles.socialMedia}
-            href="https://www.behance.net/oragazzo"
+            href="https://www.behance.net/oragazz0"
             target="_blank"
             rel="noreferrer"
           >
             <BehanceIcon className={styles.socialBadge} />
-            <p className={styles.socialText}>/oragazzo</p>
+            <p className={styles.socialText}>/oragazz0</p>
           </Link>
         </div>
       </div>

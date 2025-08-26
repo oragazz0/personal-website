@@ -22,7 +22,7 @@ export default function GitHubRepos() {
   const [repos, setRepos] = useState<Repository[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const username = "oragazzo"; // Replace with your actual GitHub username
+  const username = "oragazz0"; // Replace with your actual GitHub username
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -156,7 +156,7 @@ export default function GitHubRepos() {
         &#xFF02;If I am to flower into something other than myself.
         <br />
         I would rather rot into nothingness as I am.&#xFF02; <br />-
-        Milicent, Elden Ring
+        Millicent, Elden Ring
       </div>
     </div>
   );
