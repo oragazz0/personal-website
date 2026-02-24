@@ -32,31 +32,31 @@ export default function Document() {
 
         {/* Font Links */}
         <link
-          href="https://cdn.oragazzo.com/BL/BLMelody-Bold.otf"
+          href="https://assets.oragazzo.com/BL/BLMelody-Bold.otf"
           rel="stylesheet"
         />
         <link
-          href="https://cdn.oragazzo.com/BL/BLMelody-Book.otf"
+          href="https://assets.oragazzo.com/BL/BLMelody-Book.otf"
           rel="stylesheet"
         />
         <link
-          href="https://cdn.oragazzo.com/BL/BLMelody-ExtraLight.otf"
+          href="https://assets.oragazzo.com/BL/BLMelody-ExtraLight.otf"
           rel="stylesheet"
         />
         <link
-          href="https://cdn.oragazzo.com/BL/BLMelody-Light.otf"
+          href="https://assets.oragazzo.com/BL/BLMelody-Light.otf"
           rel="stylesheet"
         />
         <link
-          href="https://cdn.oragazzo.com/BL/BLMelody-Medium.otf"
+          href="https://assets.oragazzo.com/BL/BLMelody-Medium.otf"
           rel="stylesheet"
         />
         <link
-          href="https://cdn.oragazzo.com/BL/BLMelody-Regular.otf"
+          href="https://assets.oragazzo.com/BL/BLMelody-Regular.otf"
           rel="stylesheet"
         />
         <link
-          href="https://cdn.oragazzo.com/BL/BLMelody-SemiBold.otf"
+          href="https://assets.oragazzo.com/BL/BLMelody-SemiBold.otf"
           rel="stylesheet"
         />
       </Head>
