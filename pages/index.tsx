@@ -64,27 +64,10 @@ const Home: NextPage<HomeProps> = ({ repos }) => {
         gsap.to(id, { opacity: 0.15, duration: 4 + i * 0.6, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: i * 0.4 });
       });
 
-      // ── GEO FIGURE — perpetual breathing ───────────────────
-      gsap.to('#fig-head-main, #fig-head-shadow', { y: -8, duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.5, transformOrigin: '200px 107px' });
-      gsap.to('#fig-neck',      { y: -4,        duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.5 });
-      gsap.to('#fig-shoulders', { scaleX: 1.012, duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.8, transformOrigin: '200px 234px' });
-      gsap.to('#fig-torso',     { scaleY: 1.015, duration: 6, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.6, transformOrigin: '200px 341px' });
-      gsap.to('#fig-arm-l',     { x: -5, rotation: -1.5, duration: 8, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.0, transformOrigin: '55px 341px' });
-      gsap.to('#fig-arm-r',     { x:  5, rotation:  1.5, duration: 8, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.0, transformOrigin: '345px 341px' });
-      const arcs = gsap.utils.toArray('#geo-svg > circle');
-      if (arcs[0]) gsap.to(arcs[0] as Element, { rotation: 360,  duration: 90,  ease: 'none', repeat: -1, transformOrigin: '200px 155px' });
-      if (arcs[1]) gsap.to(arcs[1] as Element, { rotation: -360, duration: 120, ease: 'none', repeat: -1, transformOrigin: '200px 155px' });
-      [{id:'#fig-shard1',x:-8,y:-10,d:7},{id:'#fig-shard2',x:10,y:-8,d:9},{id:'#fig-shard3',x:-10,y:0,d:8},
-       {id:'#fig-shard4',x:10,y:0,d:6},{id:'#fig-shard5',x:-8,y:10,d:11},{id:'#fig-shard6',x:8,y:10,d:10},
-       {id:'#fig-shard7',x:-6,y:8,d:13},{id:'#fig-shard8',x:6,y:8,d:12}].forEach(({id,x,y,d},i) => {
-        gsap.to(id, { x, y, duration: d, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: i * 0.25 });
-        gsap.to(id, { opacity: 0.12, duration: 3.5 + i * 0.5, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: i * 0.35 });
-      });
-
       // ── SCROLL PARALLAX ────────────────────────────────────
       gsap.to('.sphere-scene', { y: -60, ease: 'none', scrollTrigger: { trigger: '#home',     start: 'top top', end: 'bottom top', scrub: 1.5 } });
       gsap.to('.about-figure', { y: -40, ease: 'none', scrollTrigger: { trigger: '#about',    start: 'top top', end: 'bottom top', scrub: 1.5 } });
-      gsap.to('.glitch-field', { y: -30, ease: 'none', scrollTrigger: { trigger: '#projects', start: 'top top', end: 'bottom top', scrub: 1.5 } });
+      gsap.to('.orbital-svg',  { y: -30, ease: 'none', scrollTrigger: { trigger: '#projects', start: 'top top', end: 'bottom top', scrub: 1.5 } });
     }
 
     // ── (b) SCROLL ENTRIES ───────────────────────────────────
