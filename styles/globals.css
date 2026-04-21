@@ -257,11 +257,11 @@ nav {
 
 .sphere-scene {
   position: absolute;
-  right: 4vw;
+  right: 8vw;
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(400px, 44vw, 620px);
-  height: clamp(400px, 44vw, 620px);
+  width: clamp(540px, 58vw, 840px);
+  height: clamp(540px, 58vw, 840px);
   z-index: 1;
 }
 
