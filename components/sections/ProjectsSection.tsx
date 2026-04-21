@@ -29,7 +29,7 @@ export default function ProjectsSection({ repos }: ProjectsSectionProps) {
           <span className="section-tick"></span>
           <span className="section-label">Personal Projects</span>
         </div>
-        <h1>Selected<br /><em>work</em>.</h1>
+        <h2>Selected<br /><em>work</em>.</h2>
         <p className="projects-desc">A collection of my <em>personal projects</em> and experiments. Here you'll find everything from automation and containerization to microservices and backend tinkering.<br />Basically all the cool stuff I <em>build and break</em> while learning!</p>
       </div>
 

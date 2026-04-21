@@ -10,7 +10,7 @@ export default function AboutSection() {
           <span className="section-tick"></span>
           <span className="section-label">Who am I?</span>
         </div>
-        <h1>I'm Otavio <br /><em>manaless</em> Ragazzo.</h1>
+        <h2>I'm Otavio <br /><em>manaless</em> Ragazzo.</h2>
         <p>A <em>software engineer</em> who loves solving challenges and building cool things. I work with automation, containerization, microservices, and backend development using <em>Go</em> and <em>Django</em>.</p>
         <p style={{ marginTop: '16px' }}>Outside of tech — full-time <em>creative nerd</em>. Fantasy stories, motorcycles, music, epic landscapes. I live for workouts, bad jokes, good beer, and an endless supply of <em>coffee</em>.</p>
       </div>

@@ -103,7 +103,7 @@ const Home: NextPage<HomeProps> = ({ repos }) => {
         .to(el.querySelector('.section-number'), { opacity: 1, y: 0, duration: 0.8 * dur, ease: 'expo.out' }, 0)
         .to(el.querySelector('.section-tick'), { scaleX: 1, duration: 0.6 * dur, ease: 'power2.out' }, 0.15 * dur)
         .to(el.querySelector('.section-label'), { opacity: 1, y: 0, duration: 0.8 * dur, ease: 'expo.out' }, 0.25 * dur)
-        .to(el.querySelector('h1'), { opacity: 1, y: 0, duration: 1.2 * dur, ease: 'expo.out' }, 0.4 * dur);
+        .to(el.querySelector('h2'), { opacity: 1, y: 0, duration: 1.2 * dur, ease: 'expo.out' }, 0.4 * dur);
 
       const paragraphs = el.querySelectorAll('p');
       if (paragraphs.length) {
@@ -119,7 +119,7 @@ const Home: NextPage<HomeProps> = ({ repos }) => {
 
     gsap.set('#about .section-number, #projects .section-number', { y: 16 });
     gsap.set('#about .section-label, #projects .section-label', { y: 16 });
-    gsap.set('#about h1, #projects h1', { y: 24 });
+    gsap.set('#about h2, #projects h2', { y: 24 });
 
     ScrollTrigger.create({
       trigger: '#about',
@@ -324,11 +324,12 @@ const Home: NextPage<HomeProps> = ({ repos }) => {
       <SpeedInsights />
       <Analytics />
       <Head>
-        <title>oragazz0 — Not a portfolio</title>
+        <title>Otavio Ragazzo — Software Engineer | Go, Django, Backend Development</title>
         <meta
           name="description"
-          content="Otavio Ragazzo's personal portfolio."
+          content="Software engineer specializing in Go, Django, microservices, and backend systems. Portfolio showcasing projects in automation, containerization, and web development."
         />
+        <link rel="canonical" href="https://oragazzo.com/" />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" type="image/svg+xml" href="/event-horizon.svg" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

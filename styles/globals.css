@@ -132,7 +132,8 @@ nav {
   font-weight: 500;
 }
 
-.section h1 {
+.section h1,
+.section h2 {
   font-family: var(--serif);
   font-weight: 700;
   line-height: 1.05;
@@ -194,8 +195,8 @@ nav {
 }
 
 #home h1 em,
-#about h1 em,
-#projects h1 em {
+#about h2 em,
+#projects h2 em {
   color: var(--crimson-bright);
   font-style: normal;
   font-weight: 900;
@@ -283,7 +284,7 @@ nav {
   z-index: 2;
 }
 
-#about h1 {
+#about h2 {
   font-size: clamp(44px, 5vw, 72px);
   margin-bottom: 28px;
   line-height: 1.1;
@@ -355,7 +356,7 @@ nav {
   width: 100%;
 }
 
-#projects h1 {
+#projects h2 {
   font-size: clamp(36px, 4vw, 58px);
 }
 
@@ -540,6 +541,7 @@ nav {
 .gsap-ready .section-number,
 .gsap-ready .section-label,
 .gsap-ready .section h1,
+.gsap-ready .section h2,
 .gsap-ready .section p,
 .gsap-ready .section-quote,
 .gsap-ready .projects-grid,
@@ -612,7 +614,7 @@ nav {
     display: none;
   }
 
-  #about h1 { font-size: clamp(36px, 9vw, 52px); }
+  #about h2 { font-size: clamp(36px, 9vw, 52px); }
 
   /* Projects */
   #projects {
@@ -620,7 +622,7 @@ nav {
     padding-bottom: 120px;
   }
 
-  #projects h1 { font-size: clamp(32px, 8vw, 44px); }
+  #projects h2 { font-size: clamp(32px, 8vw, 44px); }
 
   .projects-grid {
     grid-template-columns: 1fr;
@@ -653,8 +655,8 @@ nav {
   .section { padding: 0 16px; padding-top: 80px; padding-bottom: 60px; }
 
   #home h1 { font-size: clamp(32px, 11vw, 44px); }
-  #about h1 { font-size: clamp(28px, 9vw, 40px); }
-  #projects h1 { font-size: clamp(26px, 8vw, 36px); }
+  #about h2 { font-size: clamp(28px, 9vw, 40px); }
+  #projects h2 { font-size: clamp(26px, 8vw, 36px); }
 
   .section-quote { font-size: 12px; }
 
@@ -669,7 +671,7 @@ nav {
 /* ── Reduced motion fallback ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .section-number, .section-tick, .section-label,
-  .section h1, .section p, .section-quote,
+  .section h1, .section h2, .section p, .section-quote,
   .about-circle, .about-statue, .projects-grid, .arrow-btn {
     opacity: 1 !important;
     transform: none !important;
