@@ -1,4 +1,5 @@
 import React from 'react';
+import OrbitalRings from '../ui/OrbitalRings';
 
 interface Repository {
   name: string;
@@ -61,22 +62,7 @@ export default function ProjectsSection({ repos }: ProjectsSectionProps) {
         <span className="quote-author">— Gabriel, Ultrakill</span>
       </div>
 
-      <div className="glitch-field" id="glitch-field">
-        <div className="glitch-block gb1"></div>
-        <div className="glitch-block gb2"></div>
-        <div className="glitch-block gb3"></div>
-        <div className="glitch-block gb4"></div>
-        <div className="glitch-block gb5"></div>
-        <div className="glitch-block gb6"></div>
-        <div className="glitch-block gb7"></div>
-        <div className="glitch-block gb8"></div>
-        <div className="glitch-block gb9"></div>
-        <div className="glitch-block gb10"></div>
-      </div>
-      <div className="projects-deco">
-        <div className="deco-polygon"></div>
-        <div className="deco-triangle"></div>
-      </div>
+      <OrbitalRings />
     </section>
   );
 }

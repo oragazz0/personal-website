@@ -217,23 +217,18 @@ const Home: NextPage<HomeProps> = ({ repos }) => {
       onEnter: () => {
         gsap.to('#projects-grid', { opacity: 1, duration: 1.0 * dur, ease: 'power2.out', delay: 0.6 * dur });
 
-        // Glitch block flicker animation
+        // Orbital node pulse
         if (!reducedMotion) {
-          const blocks = gsap.utils.toArray('.glitch-block');
-          blocks.forEach((block: any, i) => {
-            const delay = 0.8 + i * 0.12;
-            gsap.to(block, {
+          const nodes = gsap.utils.toArray('.orbital-node') as HTMLElement[];
+          nodes.forEach((node, i) => {
+            gsap.to(node, {
               keyframes: [
-                { opacity: 0.06, duration: 0.08, delay },
-                { opacity: 0, duration: 0.15 },
-                { opacity: 0.04, duration: 0.06 },
-                { opacity: 0, duration: 0.3 },
-                { opacity: 0.03, duration: 0.1 },
-                { opacity: 0, duration: 0.5 },
+                { opacity: 0.9, duration: 1.8, delay: 0.5 + i * 0.6 },
+                { opacity: 0, duration: 2.5 },
               ],
               repeat: -1,
-              repeatDelay: 3 + i * 0.8,
-              ease: 'none',
+              repeatDelay: 2 + i * 0.4,
+              ease: 'power1.inOut',
             });
           });
         }
