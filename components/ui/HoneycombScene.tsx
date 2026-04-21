@@ -47,11 +47,12 @@ function delaunay(points: Point[]): Tri[] {
     }
 
     const boundary: [number, number][] = [];
-    for (const t of bad) {
+    const badArr = Array.from(bad);
+    for (const t of badArr) {
       const { i, j, k } = tris[t];
       for (const [a, b] of [[i, j], [j, k], [k, i]] as [number, number][]) {
         let shared = false;
-        for (const o of bad) {
+        for (const o of badArr) {
           if (o === t) continue;
           const ot = tris[o];
           if ([ot.i, ot.j, ot.k].includes(a) && [ot.i, ot.j, ot.k].includes(b)) {

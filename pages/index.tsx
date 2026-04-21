@@ -153,7 +153,7 @@ const Home: NextPage<HomeProps> = ({ repos }) => {
 
         // Shattered mesh – directional light trails
         if (!reducedMotion) {
-          function pulseMesh() {
+          const pulseMesh = () => {
             const allEdges = gsap.utils.toArray('.mesh-edge') as HTMLElement[];
             if (!allEdges.length) return;
 
