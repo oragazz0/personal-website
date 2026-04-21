@@ -6,7 +6,6 @@ export default function Document() {
       <Head>
         {/* Primary Meta Tags */}
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Otavio Ragazzo" />
         <meta name="keywords" content="Otavio Ragazzo, portfolio, developer, software engineer, web development, React, Next.js" />
@@ -31,6 +30,9 @@ export default function Document() {
         <meta property="twitter:image" content="https://oragazzo.com/og-image.jpg" />
 
         {/* Font Links */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
         <link
           href="https://assets.oragazzo.com/BL/BLMelody-Bold.otf"
           rel="stylesheet"
