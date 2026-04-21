@@ -113,7 +113,6 @@ nav {
   font-size: 12px;
   letter-spacing: 0.15em;
   color: var(--fg);
-  opacity: 0;
 }
 
 .section-tick {
@@ -121,7 +120,6 @@ nav {
   height: 1px;
   background: var(--crimson);
   transform-origin: left;
-  transform: scaleX(0);
 }
 
 .section-label {
@@ -130,7 +128,6 @@ nav {
   text-transform: uppercase;
   color: var(--crimson);
   font-weight: 500;
-  opacity: 0;
 }
 
 .section h1 {
@@ -138,7 +135,6 @@ nav {
   font-weight: 700;
   line-height: 1.05;
   color: var(--fg);
-  opacity: 0;
 }
 
 .section p {
@@ -147,7 +143,6 @@ nav {
   color: var(--fg-dim);
   max-width: 480px;
   font-weight: 400;
-  opacity: 0;
   text-wrap: pretty;
 }
 
@@ -166,7 +161,6 @@ nav {
   font-style: italic;
   font-size: 13px;
   color: var(--fg-dim);
-  opacity: 0;
   text-wrap: pretty;
 }
 
@@ -223,7 +217,6 @@ nav {
   background: none;
   padding: 0;
   color: var(--fg);
-  opacity: 0;
 }
 
 .arrow-btn-circle {
@@ -341,7 +334,6 @@ nav {
   gap: 1px;
   width: 100%;
   background: oklch(93% 0.005 255 / 0.06);
-  opacity: 0;
 }
 
 .project-card {
@@ -429,7 +421,6 @@ nav {
   max-width: 520px;
   margin-top: 16px;
   text-wrap: pretty;
-  opacity: 0;
 }
 
 .projects-quote {
@@ -510,6 +501,138 @@ nav {
 /* ── Scrollbar hide ────────────────────────────────────── */
 #scroller::-webkit-scrollbar { display: none; }
 #scroller { scrollbar-width: none; }
+
+/* ── GSAP-ready gating ─────────────────────────────────── */
+/* Elements only go invisible when GSAP is confirmed active.
+   Without JS / if GSAP fails, everything stays visible.       */
+.gsap-ready .section-number,
+.gsap-ready .section-label,
+.gsap-ready .section h1,
+.gsap-ready .section p,
+.gsap-ready .section-quote,
+.gsap-ready .projects-grid,
+.gsap-ready .arrow-btn {
+  opacity: 0;
+}
+.gsap-ready .section-tick {
+  transform: scaleX(0);
+}
+
+
+/* ── Mobile – 768px ────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Nav */
+  nav {
+    padding: 20px 24px;
+  }
+
+  .nav-logo { font-size: 12px; }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links a { font-size: 11px; }
+
+  /* Sections */
+  .section {
+    padding: 0 24px;
+    height: auto;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    align-items: flex-start;
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+
+  /* Home */
+  .home-content {
+    max-width: 100%;
+    padding-top: 40px;
+  }
+
+  #home h1 { font-size: clamp(40px, 10vw, 56px); }
+
+  .sphere-scene {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 240px;
+    height: 240px;
+    margin: 16px auto 0;
+    z-index: 0;
+  }
+
+  #home {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  /* About */
+  .about-content {
+    flex: 1 1 auto;
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .about-figure {
+    display: none;
+  }
+
+  #about h1 { font-size: clamp(36px, 9vw, 52px); }
+
+  /* Projects */
+  #projects {
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
+
+  #projects h1 { font-size: clamp(32px, 8vw, 44px); }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-deco { display: none; }
+  .glitch-field  { display: none; }
+
+  /* Quotes */
+  .section-quote {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: 40px;
+  }
+
+  .projects-quote {
+    left: auto;
+  }
+}
+
+/* ── Mobile – 480px ────────────────────────────────────── */
+@media (max-width: 480px) {
+  nav { padding: 16px 16px; }
+
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 10px; letter-spacing: 0.06em; }
+
+  .section { padding: 0 16px; padding-top: 80px; padding-bottom: 60px; }
+
+  #home h1 { font-size: clamp(32px, 11vw, 44px); }
+  #about h1 { font-size: clamp(28px, 9vw, 40px); }
+  #projects h1 { font-size: clamp(26px, 8vw, 36px); }
+
+  .section-quote { font-size: 12px; }
+
+  .sphere-scene {
+    width: 220px;
+    height: 220px;
+  }
+
+  .project-card { padding: 20px 20px 18px; }
+}
 
 /* ── Reduced motion fallback ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {

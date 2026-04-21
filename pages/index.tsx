@@ -24,6 +24,9 @@ const Home: NextPage = () => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const dur = reducedMotion ? 0.01 : 1;
 
+    // Gate visibility — elements go opacity:0 only when GSAP is active
+    container.current?.classList.add('gsap-ready');
+
     const scroller = document.getElementById('scroller');
     if (!scroller) return;
 
@@ -143,6 +146,27 @@ const Home: NextPage = () => {
       once: true,
       onEnter: () => {
         gsap.to('#projects-grid', { opacity: 1, duration: 1.0 * dur, ease: 'power2.out', delay: 0.6 * dur });
+
+        // Glitch block flicker animation
+        if (!reducedMotion) {
+          const blocks = gsap.utils.toArray('.glitch-block');
+          blocks.forEach((block: any, i) => {
+            const delay = 0.8 + i * 0.12;
+            gsap.to(block, {
+              keyframes: [
+                { opacity: 0.06, duration: 0.08, delay },
+                { opacity: 0, duration: 0.15 },
+                { opacity: 0.04, duration: 0.06 },
+                { opacity: 0, duration: 0.3 },
+                { opacity: 0.03, duration: 0.1 },
+                { opacity: 0, duration: 0.5 },
+              ],
+              repeat: -1,
+              repeatDelay: 3 + i * 0.8,
+              ease: 'none',
+            });
+          });
+        }
       }
     });
 

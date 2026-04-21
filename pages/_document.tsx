@@ -33,34 +33,6 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
-        <link
-          href="https://assets.oragazzo.com/BL/BLMelody-Bold.otf"
-          rel="stylesheet"
-        />
-        <link
-          href="https://assets.oragazzo.com/BL/BLMelody-Book.otf"
-          rel="stylesheet"
-        />
-        <link
-          href="https://assets.oragazzo.com/BL/BLMelody-ExtraLight.otf"
-          rel="stylesheet"
-        />
-        <link
-          href="https://assets.oragazzo.com/BL/BLMelody-Light.otf"
-          rel="stylesheet"
-        />
-        <link
-          href="https://assets.oragazzo.com/BL/BLMelody-Medium.otf"
-          rel="stylesheet"
-        />
-        <link
-          href="https://assets.oragazzo.com/BL/BLMelody-Regular.otf"
-          rel="stylesheet"
-        />
-        <link
-          href="https://assets.oragazzo.com/BL/BLMelody-SemiBold.otf"
-          rel="stylesheet"
-        />
       </Head>
 
       <body>
