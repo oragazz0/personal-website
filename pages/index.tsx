@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import React, { useRef } from "react";
 import Head from "next/head";
 import gsap from "gsap";
@@ -17,7 +17,21 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const Home: NextPage = () => {
+interface Repository {
+  name: string;
+  description: string | null;
+  language: string | null;
+  htmlUrl: string;
+  updatedAt: string;
+  stargazersCount: number;
+  topics: string[];
+}
+
+interface HomeProps {
+  repos: Repository[];
+}
+
+const Home: NextPage<HomeProps> = ({ repos }) => {
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -129,10 +143,66 @@ const Home: NextPage = () => {
       start: 'top bottom',
       once: true,
       onEnter: () => {
-        const parts = ['#fig-head-main','#fig-head-shadow','#fig-neck','#fig-shoulders','#fig-torso','#fig-arm-l','#fig-arm-r'];
-        parts.forEach((id, i) => {
-          gsap.from(id, { y: -12 + i * 4, duration: 1.2, ease: 'expo.out', delay: 0.15 + i * 0.08 });
+        gsap.from('.event-horizon-art', {
+          opacity: 0,
+          scale: 0.9,
+          duration: 1.6,
+          ease: 'expo.out',
+          delay: 0.3,
         });
+
+        // Shattered mesh – directional light trails
+        if (!reducedMotion) {
+          function pulseMesh() {
+            const allEdges = gsap.utils.toArray('.mesh-edge') as HTMLElement[];
+            if (!allEdges.length) return;
+
+            const angle = Math.random() * Math.PI * 2;
+            const cosA = Math.cos(angle);
+            const sinA = Math.sin(angle);
+
+            const sorted = allEdges.map(el => {
+              const x1 = parseFloat(el.getAttribute('x1') || '0');
+              const y1 = parseFloat(el.getAttribute('y1') || '0');
+              const x2 = parseFloat(el.getAttribute('x2') || '0');
+              const y2 = parseFloat(el.getAttribute('y2') || '0');
+              return { el, score: ((x1 + x2) / 2) * cosA + ((y1 + y2) / 2) * sinA };
+            }).sort((a, b) => a.score - b.score);
+
+            const trailSize = 8 + Math.floor(Math.random() * 6);
+            const start = Math.floor(Math.random() * Math.max(1, sorted.length - trailSize));
+            const trail = sorted.slice(start, start + trailSize).map(e => e.el);
+
+            gsap.to(trail, {
+              keyframes: [
+                { opacity: 0.7, duration: 1.0 },
+                { opacity: 0, duration: 3.5 },
+              ],
+              stagger: 0.35,
+              ease: 'power1.inOut',
+            });
+
+            setTimeout(pulseMesh, 4000 + Math.random() * 3000);
+          }
+
+          setTimeout(pulseMesh, 600);
+
+          // Breathing fragment triangles
+          const frags = gsap.utils.toArray('.mesh-frag') as HTMLElement[];
+          frags.forEach((frag, i) => {
+            gsap.to(frag, {
+              keyframes: [
+                { opacity: 0.15, duration: 0.2, delay: 1.0 + i * 0.3 },
+                { opacity: 0, duration: 1.5 },
+                { opacity: 0.1, duration: 0.15 },
+                { opacity: 0, duration: 2.0 },
+              ],
+              repeat: -1,
+              repeatDelay: 3 + i * 0.5,
+              ease: 'none',
+            });
+          });
+        }
       }
     });
 
@@ -293,10 +363,71 @@ const Home: NextPage = () => {
       <div id="scroller">
         <HomeSection />
         <AboutSection />
-        <ProjectsSection />
+        <ProjectsSection repos={repos} />
       </div>
     </div>
   );
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  let repos: Repository[] = [];
+
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) {
+    console.warn('GITHUB_TOKEN not set – projects section will be empty.');
+    return { props: { repos }, revalidate: 3600 };
+  }
+
+  try {
+    const query = `{
+      user(login: "oragazz0") {
+        pinnedItems(first: 6, types: REPOSITORY) {
+          nodes {
+            ... on Repository {
+              name
+              description
+              url
+              stargazerCount
+              updatedAt
+              primaryLanguage { name }
+              repositoryTopics(first: 10) {
+                nodes { topic { name } }
+              }
+            }
+          }
+        }
+      }
+    }`;
+
+    const response = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: {
+        'Authorization': `bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query }),
+    });
+
+    const json = await response.json();
+    const pinnedNodes = json?.data?.user?.pinnedItems?.nodes || [];
+
+    repos = pinnedNodes.map((repo: any) => ({
+      name: repo.name,
+      description: repo.description,
+      language: repo.primaryLanguage?.name || null,
+      htmlUrl: repo.url,
+      updatedAt: repo.updatedAt,
+      stargazersCount: repo.stargazerCount,
+      topics: repo.repositoryTopics?.nodes?.map((n: any) => n.topic.name) || [],
+    }));
+  } catch (error) {
+    console.error('Failed to fetch pinned repos:', error);
+  }
+
+  return {
+    props: { repos },
+    revalidate: 3600,
+  };
+};

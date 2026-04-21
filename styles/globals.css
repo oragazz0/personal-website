@@ -291,22 +291,51 @@ nav {
 
 .about-figure {
   position: absolute;
-  right: 3vw;
+  right: -2vw;
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(280px, 28vw, 420px);
-  height: auto;
+  width: clamp(520px, 65vw, 900px);
+  height: clamp(520px, 65vw, 900px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
 }
 
-.geo-figure {
-  width: 100%;
+.event-horizon-art {
+  width: 70%;
   height: auto;
   max-height: 85vh;
   opacity: 1;
+  filter: drop-shadow(0 0 50px rgba(139, 26, 26, 0.4));
+}
+
+/* Shattered mesh */
+.mesh-svg {
+  position: absolute;
+  inset: -5%;
+  width: 110%;
+  height: 110%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mesh-face {
+  fill: rgba(74, 14, 14, 0.04);
+  stroke: rgba(192, 57, 43, 0.12);
+  stroke-width: 0.5;
+}
+
+.mesh-frag {
+  fill: rgba(139, 26, 26, 0.08);
+  stroke: rgba(231, 76, 60, 0.15);
+  opacity: 0;
+}
+
+.mesh-edge {
+  stroke: var(--crimson-bright);
+  stroke-width: 1;
+  opacity: 0;
 }
 
 .fig-part { transform-origin: 170px 260px; }
